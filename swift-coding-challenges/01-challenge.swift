@@ -2,7 +2,7 @@
 Write a function that accepts a String as its only parameter, and returns true if the string has
 only unique letters, taking letter case into account.
 */
-let input = "testing"
+let input = "Testingtesting123"
 let characters = Array(input)
 print(characters)
 var temp = [String]()
