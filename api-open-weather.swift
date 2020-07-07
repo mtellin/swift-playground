@@ -1,11 +1,11 @@
 // Pull from API and properly parse JSON
 
 import Foundation
-
-struct WeatherManager {
+import FoundationNetworking
 
     // will move this to a user prompt later
     let cityName = "minneapolis"
+    print(cityName)
     // get env value for API Key
     let apiKey = ProcessInfo.processInfo.environment["OPEN_WEATHER_API_KEY"]
     
@@ -20,6 +20,7 @@ struct WeatherManager {
 
         */
        let urlString = "\(weatherURL)&q=\(cityName)&appid=\(String(describing: apiKey))"
+       print(urlString)
 
        performRequest(urlString: urlString)
     }
@@ -29,9 +30,11 @@ struct WeatherManager {
         if let url = URL(string: urlString) {
             //2. create url session
             let session = URLSession(configuration: .default)
+            print(session)
 
             //3. give session a task
             let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
+            print("task is: \(task)")
             
             //4. Start the task
             task.resume()
@@ -40,15 +43,17 @@ struct WeatherManager {
     }
 
     func handle(data: Data?, response: URLResponse?, error: Error?) {
+        print("starting the handle")
         if error != nil {
             print(error!) //adding the ! makes it optional?
             return
         }
 
         if let safeData = data {
+            print(safeData)
             let dataString = String(data: safeData, encoding: .utf8)
             print(dataString!)
         }
 
     }
-}
+fetchWeather(cityName: cityName)
