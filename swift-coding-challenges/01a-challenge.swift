@@ -12,7 +12,7 @@ print(characters)
 var temp = [String]()
 var pass = true
 
-func challenge1(input: String) -> String {
+func challenge1(input: String) -> Bool {
     for i in 0..<characters.count {
         print("Current character is: \(characters[i])")
         print(type(of: characters[i]))
@@ -27,9 +27,12 @@ func challenge1(input: String) -> String {
         print("temp contains: \(temp)")
     }
     print("The result is \(pass)")
-    return "pass"
+    return pass
 }
 
 // the _= skips the error of the return "pass" in the function not being used
 // warning: result of call to 'challenge1(input:)' is unused
-_=challenge1(input: input)
+//_=challenge1(input: input)
+
+let result = challenge1(input: input)
+print("result is: \(result)")
